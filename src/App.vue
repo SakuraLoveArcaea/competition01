@@ -28,7 +28,7 @@ const games = [
   { id: 'arcaea', name: 'Arcaea', columns: ['指定曲一', '指定曲二', '指定曲三'] },
   { id: 'maimai', name: 'maimai', columns: ['穹蒼', '夢人', '好熟'] },
   { id: 'chunithm', name: 'Chunithm', columns: ['Fidget dancer', 'nightwave fragment', "大鬥士"] },
-  { id: 'game4', name: '預留項目 (game4)', columns: ['指定曲一', '指定曲二'] },
+  { id: 'ProjectSakai', name: 'Project Sakai', columns: ['指定曲一', '指定曲二', '指定曲三'] },
 ];
 
 const records = ref<PlayerRecord[]>([]);
@@ -103,7 +103,6 @@ const formatDecimal = (value: number) => {
       </TabList>
       <TabPanels>
         <TabPanel v-for="(game, index) in games" :key="game.id" :value="index.toString()">
-          <!-- 移除了 paginator 與 rows 設定以取消分頁 -->
           <DataTable
             :value="records"
             stripedRows

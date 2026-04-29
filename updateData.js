@@ -21,8 +21,7 @@ const db = getFirestore();
 // Replace this with the actual data source logic
 const tournamentData = {
   arcaea: [
-    { player: "PlayerA", song1: 9800000, song2: 9900000, song3: 9950000, total: 29650000 },
-    { player: "PlayerB", song1: 9500000, song2: 9600000, song3: 9700000, total: 28800000 }
+
   ],
   maimai: [
 
