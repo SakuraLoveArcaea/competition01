@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      // Check for a redirect path from 404.html in sessionStorage
+      const redirectPath = sessionStorage.getItem('redirectPath');
+      if (redirectPath) {
+        // Clear the stored path to prevent loops
+        sessionStorage.removeItem('redirectPath');
+        // Use replaceState to update the URL without reloading the page.
+        // This makes the browser's URL match what the user originally tried to access.
+        // Vue Router will then pick up this path on initialization.
+        window.history.replaceState(null, '', redirectPath);
+      }
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Get the full path that the user tried to access, including query params and hash.
+    const redirectPath = window.location.pathname + window.location.search + window.location.hash;
+
+    // Store this path in sessionStorage.
+    sessionStorage.setItem('redirectPath', redirectPath);
+
+    // Immediately redirect to the base of the application.
+    // The '/competition01/' base path is derived from your vite.config.ts.
+    window.location.replace('/competition01/');
+  </script>
+</head>
+<body>
+  <p>If you are not redirected automatically, follow this <a href="/competition01/">link to the homepage</a>.</p>
+</body>
+</html>
