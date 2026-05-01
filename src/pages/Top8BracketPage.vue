@@ -104,7 +104,6 @@ watch(activeTab, (newVal) => {
 <template>
   <div class="container">
     <h1>八強淘汰賽</h1>
-    <p>此為根據預選賽成績排出的八強對戰組合。</p>
 
     <Tabs v-model:value="activeTab">
       <TabList>

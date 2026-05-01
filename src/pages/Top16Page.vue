@@ -117,7 +117,7 @@ const formatDecimal = (value: number | string) => {
 <template>
   <div class="container">
     <h1>十六強入圍名單</h1>
-    <p>此為根據預選賽成績排出的十六強選手名單。</p>
+    <p>此為根據預選賽成績以及保送名額排出的十六強選手名單。</p>
 
     <Tabs v-model:value="activeTab">
       <TabList>
