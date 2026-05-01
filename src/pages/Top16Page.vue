@@ -26,7 +26,24 @@ const games = [
 // Hardcoded placeholder data for the Top 16, structured by game ID
 const top16PlayersData: { [key: string]: Top16Player[] } = {
   arcaea: Array.from({ length: 16 }, (_, i) => ({ seed: i + 1, player: `ArcaeaPlayer${i + 1}`, total: 29850000 - i * 50000 })),
-  maimai: Array.from({ length: 16 }, (_, i) => ({ seed: i + 1, player: `MaimaiPlayer${i + 1}`, total: 302.9999 - i * 0.05 })),
+  maimai: [
+      { "seed": 1, "player": "maimai__0528", "total": 302.9834 },
+      { "seed": 2, "player": "moyu5945", "total": 302.9826 },
+      { "seed": 3, "player": "bobo0804", "total": 302.9709 },
+      { "seed": 4, "player": "kkkmr45322", "total": 302.9695 },
+      { "seed": 5, "player": "crimsrk", "total": 302.9693 },
+      { "seed": 6, "player": "foam_0.0", "total": 302.9662 },
+      { "seed": 7, "player": "gdren.", "total": 302.9614 },
+      { "seed": 8, "player": "strwng", "total": 302.9582 },
+      { "seed": 9, "player": "blackcatt._72", "total": 302.9511 },
+      { "seed": 10, "player": "loin0201", "total": 302.927 },
+      { "seed": 11, "player": "tailcoat_", "total": 302.9235 },
+      { "seed": 12, "player": "p72toast", "total": 302.8987 },
+      { "seed": 13, "player": "manju9487", "total": 302.8974 },
+      { "seed": 14, "player": "blackpeaktw", "total": 302.8635 },
+      { "seed": 15, "player": "ax_eri.a", "total": 302.8313 },
+      { "seed": 16, "player": "stitch_0412", "total": 300.7507 }
+  ],
   chunithm: Array.from({ length: 16 }, (_, i) => ({ seed: i + 1, player: `ChunithmPlayer${i + 1}`, total: 3029999 - i * 100 })),
   'ProjectSakai-jp': Array.from({ length: 16 }, (_, i) => ({ seed: i + 1, player: `PSJPPlayer${i + 1}`, total: 1000000 - i * 10000 })),
   'ProjectSakai-in': Array.from({ length: 16 }, (_, i) => ({ seed: i + 1, player: `PSINPlayer${i + 1}`, total: 1000000 - i * 10000 })),
