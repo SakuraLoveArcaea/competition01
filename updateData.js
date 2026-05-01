@@ -21,7 +21,20 @@ const db = getFirestore();
 // Replace this with the actual data source logic
 const tournamentData = {
   arcaea: [
-    // 這裡可以放 Arcaea 的資料，如果為空則會上傳空陣列
+      { "player": "CLH", "song1": 10001046, "song2": 10001036, "song3": 10001330, "total": 30003412 },
+      { "player": "關注永雛塔菲謝謝喵", "song1": 9996364, "song2": 10001017, "song3": 9997597, "total": 29994978 },
+      { "player": "拉格蘭我婆", "song1": 9991737, "song2": 10001029, "song3": 9997592, "total": 29990358 },
+      { "player": "Bot14", "song1": 9977716, "song2": 10001012, "song3": 9978959, "total": 29957687 },
+      { "player": "咖啡", "song1": 9898550, "song2": 10000985, "song3": 9852486, "total": 29752021 },
+      { "player": "拉格蘭我婆", "song1": 9996385, "song2": 9996240, "song3": 10001314, "total": 29993939 },
+      { "player": "咖啡", "song1": 9949768, "song2": 9991431, "song3": 9952902, "total": 29894101 },
+      { "player": "七尾", "song1": 9968435, "song2": 9991453, "song3": 9986395, "total": 29946283 },
+      { "player": "三木", "song1": 9982384, "song2": 10001022, "song3": 9986391, "total": 29969797 },
+      { "player": "想睡覺", "song1": 9968422, "song2": 9938811, "song3": 9926921, "total": 29834154 },
+      { "player": "爺家森測試", "song1": 10001046, "song2": 10001036, "song3": 9993895, "total": 29995977 },
+      { "player": "XiaoHong", "song1": 10001064, "song2": 10001041, "song3": 10001340, "total": 30003445 },
+      { "player": "niniagibye ", "song1": 0, "song2": 10001035, "song3": 0, "total": 10001035 },
+      { "player": "郝鎊謗", "song1": 9987057, "song2": 10001008, "song3": 9986430, "total": 29974495 }
   ],
   maimai: [
       { "player": "ax_eri.a", "song1": 100.92, "song2": 100.932, "song3": 100.9793, "total": 302.8313 },

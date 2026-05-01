@@ -89,6 +89,7 @@ const formatDecimal = (value: number | undefined, gameId: string) => {
 <template>
   <div class="container">
     <h1>音樂遊戲比賽 預選賽排名</h1>
+    <h2>含重複提交紀錄</h2>
     <div v-if="lastUpdated" class="last-updated">
       最後更新時間: {{ new Date(lastUpdated).toLocaleString() }}
     </div>
@@ -125,7 +126,7 @@ const formatDecimal = (value: number | undefined, gameId: string) => {
               </template>
             </Column>
 
-            <Column field="total" header="總分" sortable>
+            <Column field="total" header="總分">
               <template #body="slotProps">
                 {{ formatDecimal(slotProps.data.total, currentGameId) }}
               </template>
