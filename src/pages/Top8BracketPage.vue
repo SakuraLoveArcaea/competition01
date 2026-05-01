@@ -90,7 +90,7 @@ const games = [
   { id: 'maimai', name: 'maimai' },
   { id: 'chunithm', name: 'Chunithm' },
   { id: 'ProjectSakai-jp', name: 'Project Sakai 日服' },
-  { id: 'ProjectSakai-in', name: 'Project Sakai 國際服' }
+  { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服' }
 ];
 
 const currentBracket = ref(bracketData.arcaea);

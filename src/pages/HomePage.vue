@@ -98,31 +98,29 @@ const games = [
     { id: 'arcaea', name: 'Arcaea', columns: ['Altale', 'Sulfur', 'Pentiment'] },
     { id: 'maimai', name: 'maimai', columns: ['蒼穹舞楽', '儚きもの人間', 'あつすぎの歌'] },
     { id: 'chunithm', name: 'Chunithm', columns: ['Fidget dancer', 'nightwave fragment', "大鬥士"] },
-    { id: 'ProjectSakai-jp', name: 'Project Sakai 日服', columns: ['指定曲一', '指定曲二', '指定曲三', '指定曲四', '指定曲五'] },
-    { id: 'ProjectSakai-in', name: 'Project Sakai 國際服', columns: ['88☆彡', '指定曲二', '指定曲三'] }
+    { id: 'ProjectSakai-jp', name: 'Project Sakai 日服', columns: ['ココロ', 'いかないで', 'サラマンダー', 'とうほう☆ワンダーランド'] },
+    { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服', columns: ['88☆彡', 'Help me ERINNNNNN!!', 'SnowMix♪', '一千光年', 'DNA'] }
 ];
 
 const records = ref<PlayerRecord[]>([]);
 const lastUpdated = ref<string>(new Date().toISOString()); // Set a static update time
-const loading = ref(false);
 
 const currentColumns = ref<string[]>(games[0].columns);
 const currentGameId = ref<string>(games[0].id);
 
 const updateRecords = (gameId: string) => {
-  loading.value = true;
   const data = (tournamentData as any)[gameId] || [];
   // Sort data by total descending
   data.sort((a: PlayerRecord, b: PlayerRecord) => b.total - a.total);
+
+  currentColumns.value = games.find(g => g.id === gameId)?.columns || [];
+  currentGameId.value = gameId;
   records.value = data;
-  loading.value = false;
 };
 
 watch(activeTab, (newVal) => {
   const index = parseInt(newVal);
   const game = games[index];
-  currentColumns.value = game.columns;
-  currentGameId.value = game.id;
   updateRecords(game.id);
 });
 
@@ -160,11 +158,9 @@ const formatDecimal = (value: number | undefined, gameId: string) => {
           <DataTable
             :value="records"
             stripedRows
-            :loading="loading"
             responsiveLayout="scroll"
           >
             <template #empty> 尚無資料 </template>
-            <template #loading> 載入中... </template>
 
             <Column header="排名" style="width: 10%">
               <template #body="slotProps">
