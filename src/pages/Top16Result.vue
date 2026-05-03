@@ -35,19 +35,19 @@ const top16ResultsData: { [key: string]: Top16GameData } = {
         courses: 3,
         songInfo: [
             {
-                image: '/arcaea/01.jpeg',
+                image: '/competition01/arcaea/01.jpeg',
                 title: 'ENERGY SYNERGY MATRIX',
                 artist: 'Tanchiky',
                 diff: 'BYD 10',
             },
             {
-                image: '/arcaea/02.jpeg',
+                image: '/competition01/arcaea/02.jpeg',
                 title: 'Dantalion',
                 artist: 'Team Grimoire',
                 diff: 'FTR 10+',
             },
             {
-                image: '/arcaea/03.jpeg',
+                image: '/competition01/arcaea/03.jpeg',
                 title: 'Callima Karma',
                 artist: 't+pazolite vs Feryquitous',
                 diff: 'FTR 9+',
@@ -72,19 +72,19 @@ const top16ResultsData: { [key: string]: Top16GameData } = {
         courses: 3,
         songInfo: [
             {
-                image: '/maimai/01.jpeg',
+                image: '/competition01/maimai/01.jpeg',
                 title: '前衛的Landscape',
                 artist: 'HiTECH NINJA feat. RANASOL',
                 diff: 'MAS 13+',
             },
             {
-                image: '/maimai/02.jpeg',
+                image: '/competition01/maimai/02.jpeg',
                 title: 'FFT',
                 artist: 'cybermiso',
                 diff: 'MAS 14',
             },
             {
-                image: '/maimai/03.jpeg',
+                image: '/competition01/maimai/03.jpeg',
                 title: '天火明命',
                 artist: '削除',
                 diff: 'MAS 14',
@@ -114,19 +114,19 @@ const top16ResultsData: { [key: string]: Top16GameData } = {
         courses: 3,
         songInfo: [
             {
-                image: '/chunithm/01.jpeg',
+                image: '/competition01/chunithm/01.jpeg',
                 title: 'Calamity Fortune',
                 artist: 'LeaF',
                 diff: 'MAS 14+',
             },
             {
-                image: '/chunithm/02.jpeg',
+                image: '/competition01/chunithm/02.jpeg',
                 title: 'Superbia',
                 artist: 'Team Grimoire',
                 diff: 'MAS 14+',
             },
             {
-                image: '/chunithm/03.jpeg',
+                image: '/competition01/chunithm/03.jpeg',
                 title: '蜘蛛の糸',
                 artist: 'きくお×cosMo＠暴走P feat.影縫英',
                 diff: 'MAS 15',
@@ -155,25 +155,25 @@ const top16ResultsData: { [key: string]: Top16GameData } = {
         courses: 4,
         songInfo: [
             {
-                image: '/pjskjp/01.jpeg',
+                image: '/competition01/pjskjp/01.jpeg',
                 title: 'SAN値直葬',
                 artist: 'STEAKA.',
                 diff: 'MAS 33',
             },
             {
-                image: '/pjskjp/02.jpeg',
+                image: '/competition01/pjskjp/02.jpeg',
                 title: '0.0000034',
                 artist: 'Musanuriyu.',
                 diff: 'MAS 34',
             },
             {
-                image: '/pjskjp/03.jpeg',
+                image: '/competition01/pjskjp/03.jpeg',
                 title: 'folern',
                 artist: 'nulut.',
                 diff: 'APD 35',
             },
             {
-                image: '/pjskjp/04.jpeg',
+                image: '/competition01/pjskjp/04.jpeg',
                 title: 'the EmpErroR',
                 artist: 'sasakure.UK',
                 diff: 'MAS 36',
@@ -188,31 +188,31 @@ const top16ResultsData: { [key: string]: Top16GameData } = {
         courses: 5,
         songInfo: [
             {
-                image: '/pjskin/01.jpeg',
+                image: '/competition01/pjskin/01.jpeg',
                 title: 'ノンブレス・オブリージュ',
                 artist: 'Pinocchio-P',
                 diff: 'MAS 31',
             },
             {
-                image: '/pjskin/02.jpeg',
+                image: '/competition01/pjskin/02.jpeg',
                 title: '熱異常',
                 artist: 'iyowa covered by 25-ji, Nightcord de.',
                 diff: 'MAS 32',
             },
             {
-                image: '/pjskin/03.jpeg',
+                image: '/competition01/pjskin/03.jpeg',
                 title: 'folern',
                 artist: 'nulut.',
                 diff: 'MAS 32',
             },
             {
-                image: '/pjskin/04.jpeg',
+                image: '/competition01/pjskin/04.jpeg',
                 title: 'トンデモワンダーズ',
                 artist: 'sasakure.UK',
                 diff: 'APD 33',
             },
             {
-                image: '/pjskin/05.jpeg',
+                image: '/competition01/pjskin/05.jpeg',
                 title: '孃王',
                 artist: 'HachiojiP',
                 diff: 'MAS 33',
