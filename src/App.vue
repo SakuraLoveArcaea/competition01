@@ -6,6 +6,8 @@ import Tag from 'primevue/tag';
 import {ref, onMounted, watch} from 'vue';
 import Message from "primevue/message";
 
+const lastUpdated = ref<string>(new Date().toISOString()); // Set a static update time
+
 const items = ref([
     {
         label: '預選賽成績',
@@ -39,8 +41,8 @@ const announcementData = ref([
     {project: 'Arcaea', prelims: true, top16_list: true, top16: true, top8_list: false},
     {project: 'maimai', prelims: true, top16_list: true, top16: true, top8_list: false},
     {project: 'Chunithm', prelims: true, top16_list: true, top16: true, top8_list: false},
-    {project: 'PJSK 日服', prelims: false, top16_list: true, top16: true, top8_list: false},
-    {project: 'PJSK 國際/台服', prelims: false, top16_list: true, top16: true, top8_list: false},
+    {project: 'PJSK 日服', prelims: true, top16_list: true, top16: true, top8_list: false},
+    {project: 'PJSK 國際/台服', prelims: true, top16_list: true, top16: true, top8_list: false},
 ]);
 // --- End of Data ---
 
@@ -114,6 +116,9 @@ const getStatusSeverity = (status: boolean) => {
         </main>
 
         <footer class="app-footer">
+            <div v-if="lastUpdated" class="last-updated">
+                最後更新時間: {{ new Date(lastUpdated).toLocaleString() }}
+            </div>
             <p>
                 如有問題請找 Discord: sakuralovearcaea<br>
                 sakura的其他作品：<br>
