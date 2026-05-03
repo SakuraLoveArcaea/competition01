@@ -23,7 +23,7 @@ const games = [
   { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服' }
 ];
 
-// Hardcoded placeholder data for the Top 16, structured by game ID
+// Hardcoded placeholder img for the Top 16, structured by game ID
 const top16PlayersData: { [key: string]: Top16Player[] } = {
   arcaea: [
       { "seed": 1, "player": "XiaoHong", "total": 30003445 },
@@ -75,7 +75,10 @@ const top16PlayersData: { [key: string]: Top16Player[] } = {
       { "seed": 15, "player": "joleehigh", "total": 3028148 },
       { "seed": 16, "player": "lyc_1234", "total": 3014174 }
   ],
-  'ProjectSakai-jp': [],
+  'ProjectSakai-jp': [
+      { "seed": 1, "player": "luna_with_clh", "total": "-"},
+      { "seed": 2, "player": "blackcatt._72", "total": "-"}
+  ],
   'ProjectSakai-in': [
       { "seed": 1, "player": "blackcatt._72", "total": "-" },
       { "seed": 2, "player": "rumi_0527", "total": "-" },
@@ -121,7 +124,7 @@ const formatDecimal = (value: number | string) => {
 
     <Tabs v-model:value="activeTab">
       <TabList>
-        <Tab v-for="(game, index) in games" :key="game.id" :value="index.toString()">
+        <Tab v-for="(game, index) in games" :key="game.id" :value="index.toString()" class="p-tab">
           {{ game.name }}
         </Tab>
       </TabList>
@@ -158,5 +161,18 @@ p {
   text-align: center;
   margin-bottom: 2rem;
   color: #666;
+}
+
+
+.p-tab {
+    border-radius: 0;
+    flex: 1;
+    justify-content: center; /* 讓文字在 Tab 內也居中 */
+}
+
+.p-tab:focus,
+.p-tab:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
 </style>

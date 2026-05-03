@@ -96,8 +96,8 @@ const tournamentData = {
 const activeTab = ref('0');
 const games = [
     { id: 'arcaea', name: 'Arcaea', columns: ['Altale', 'Sulfur', 'Pentiment'] },
-    { id: 'maimai', name: 'maimai', columns: ['蒼穹舞楽', '儚きもの人間', 'あつすぎの歌'] },
-    { id: 'chunithm', name: 'Chunithm', columns: ['Fidget dancer', 'nightwave fragment', "大鬥士"] },
+    { id: 'maimai', name: 'maimai でらっくす', columns: ['蒼穹舞楽', '儚きもの人間', 'あつすぎの歌'] },
+    { id: 'chunithm', name: 'CHUNITHM', columns: ['Fidget dancer', 'nightwave fragment', "大鬥士"] },
     { id: 'ProjectSakai-jp', name: 'Project Sakai 日服', columns: ['ココロ', 'いかないで', 'サラマンダー', 'とうほう☆ワンダーランド'] },
     { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服', columns: ['88☆彡', 'Help me ERINNNNNN!!', 'SnowMix♪', '一千光年', 'DNA'] }
 ];
@@ -110,7 +110,7 @@ const currentGameId = ref<string>(games[0].id);
 
 const updateRecords = (gameId: string) => {
   const data = (tournamentData as any)[gameId] || [];
-  // Sort data by total descending
+  // Sort img by total descending
   data.sort((a: PlayerRecord, b: PlayerRecord) => b.total - a.total);
 
   currentColumns.value = games.find(g => g.id === gameId)?.columns || [];
@@ -154,7 +154,7 @@ const formatDecimal = (value: number | undefined, gameId: string) => {
         </Tab>
       </TabList>
       <TabPanels>
-        <TabPanel v-for="(game, index) in games" :key="game.id" :value="index.toString()">
+        <TabPanel v-for="(game, index) in games" :key="game.id" :value="index.toString()" class="p-tab">
           <DataTable
             :value="records"
             stripedRows
@@ -203,5 +203,18 @@ h1 {
   color: #666;
   margin-bottom: 2rem;
   font-size: 0.9rem;
+}
+
+
+.p-tab {
+    border-radius: 0;
+    flex: 1;
+    justify-content: center; /* 讓文字在 Tab 內也居中 */
+}
+
+.p-tab:focus,
+.p-tab:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
 </style>

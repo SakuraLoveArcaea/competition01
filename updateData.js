@@ -17,8 +17,8 @@ initializeApp({
 
 const db = getFirestore();
 
-// Sample data structure to update
-// Replace this with the actual data source logic
+// Sample img structure to update
+// Replace this with the actual img source logic
 const tournamentData = {
   arcaea: [
       { "player": "CLH", "song1": 10001046, "song2": 10001036, "song3": 10001330, "total": 30003412 },
@@ -118,6 +118,6 @@ updateData().then(() => {
   console.log("Data update completed.");
   process.exit(0);
 }).catch(error => {
-  console.error("Error updating data:", error);
+  console.error("Error updating img:", error);
   process.exit(1);
 });

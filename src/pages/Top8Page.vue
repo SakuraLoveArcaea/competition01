@@ -23,7 +23,7 @@ const games = [
   { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服' }
 ];
 
-// This data should ideally be consistent with Top16Page and Top8BracketPage
+// This img should ideally be consistent with Top16Page and Top8BracketPage
 const top16PlayersData: { [key: string]: TopPlayer[] } = {
   arcaea: [
 
@@ -68,7 +68,7 @@ const formatDecimal = (value: number | string) => {
 
     <Tabs v-model:value="activeTab">
       <TabList>
-        <Tab v-for="(game, index) in games" :key="game.id" :value="index.toString()">
+        <Tab v-for="(game, index) in games" :key="game.id" :value="index.toString()" class="p-tab">
           {{ game.name }}
         </Tab>
       </TabList>
@@ -105,5 +105,18 @@ p {
   text-align: center;
   margin-bottom: 2rem;
   color: #666;
+}
+
+
+.p-tab {
+    border-radius: 0;
+    flex: 1;
+    justify-content: center; /* 讓文字在 Tab 內也居中 */
+}
+
+.p-tab:focus,
+.p-tab:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
 </style>

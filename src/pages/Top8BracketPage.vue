@@ -86,11 +86,11 @@ const bracketData = {
 
 const activeTab = ref('0');
 const games = [
-  { id: 'arcaea', name: 'Arcaea' },
-  { id: 'maimai', name: 'maimai' },
-  { id: 'chunithm', name: 'Chunithm' },
-  { id: 'ProjectSakai-jp', name: 'Project Sakai 日服' },
-  { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服' }
+  { id: 'arcaea', name: 'Arcaea(5/8)' },
+  { id: 'maimai', name: 'maimai(5/9)' },
+  { id: 'chunithm', name: 'Chunithm(5/9)' },
+  { id: 'ProjectSakai-jp', name: 'Project Sakai 日服(5/8)' },
+  { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服(5/8)' }
 ];
 
 const currentBracket = ref(bracketData.arcaea);
@@ -107,7 +107,7 @@ watch(activeTab, (newVal) => {
 
     <Tabs v-model:value="activeTab">
       <TabList>
-        <Tab v-for="(game, index) in games" :key="game.id" :value="index.toString()">
+        <Tab v-for="(game, index) in games" :key="game.id" :value="index.toString()" class="p-tab">
           {{ game.name }}
         </Tab>
       </TabList>
@@ -301,5 +301,18 @@ p {
     --winner-bg-color: #4a4432;
     --subtitle-color: #aaa;
   }
+}
+
+
+.p-tab {
+    border-radius: 0;
+    flex: 1;
+    justify-content: center; /* 讓文字在 Tab 內也居中 */
+}
+
+.p-tab:focus,
+.p-tab:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
 </style>

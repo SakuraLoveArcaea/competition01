@@ -3,6 +3,7 @@ import HomePage from '../pages/HomePage.vue';
 import Top16Page from '../pages/Top16Page.vue';
 import Top8Page from '../pages/Top8Page.vue';
 import Top8BracketPage from '../pages/Top8BracketPage.vue';
+import Top16Result from '../pages/Top16Result.vue';
 
 const routes = [
   {
@@ -14,6 +15,11 @@ const routes = [
     path: '/top16',
     name: 'Top16',
     component: Top16Page,
+  },
+  {
+    path: '/top16-result',
+    name: 'Top16Result',
+    component: Top16Result,
   },
   {
     path: '/top8list',
