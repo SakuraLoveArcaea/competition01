@@ -189,13 +189,13 @@ const top16ResultsData: { [key: string]: Top16GameData } = {
         songInfo: [
             {
                 image: '/pjskin/01.jpeg',
-                title: 'ピノキオピー - ノンブレス・オブリージュ',
+                title: 'ノンブレス・オブリージュ',
                 artist: 'Pinocchio-P',
                 diff: 'MAS 31',
             },
             {
                 image: '/pjskin/02.jpeg',
-                title: '異常熱',
+                title: '熱異常',
                 artist: 'iyowa covered by 25-ji, Nightcord de.',
                 diff: 'MAS 32',
             },
