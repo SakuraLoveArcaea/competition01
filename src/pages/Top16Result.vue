@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import {ref, onMounted, watch} from 'vue';
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Card from 'primevue/card';
@@ -15,6 +17,7 @@ interface Top16PlayerResult {
     rank: number;
     player: string;
     score: (number | null)[];
+    totalScore: number | null;
 }
 
 interface Top16SongInfo {
@@ -24,217 +27,58 @@ interface Top16SongInfo {
     diff: string;
 }
 
-interface Top16GameData {
+interface Top16StaticGameData {
     courses: number;
     songInfo: Top16SongInfo[];
-    players: Top16PlayerResult[];
 }
 
-const top16ResultsData: { [key: string]: Top16GameData } = {
+const staticGameInfo: { [key: string]: Top16StaticGameData } = {
     arcaea: {
         courses: 3,
         songInfo: [
-            {
-                image: '/competition01/arcaea/01.jpeg',
-                title: 'ENERGY SYNERGY MATRIX',
-                artist: 'Tanchiky',
-                diff: 'BYD 10',
-            },
-            {
-                image: '/competition01/arcaea/02.jpeg',
-                title: 'Dantalion',
-                artist: 'Team Grimoire',
-                diff: 'FTR 10+',
-            },
-            {
-                image: '/competition01/arcaea/03.jpeg',
-                title: 'Callima Karma',
-                artist: 't+pazolite vs Feryquitous',
-                diff: 'FTR 9+',
-            },
-        ],
-        players: [
-            {rank: 1, player: "XiaoHong", score: [null, null, null]},
-            {rank: 2, player: "CLH", score: [null, null, null]},
-            {rank: 3, player: "爺家森測試", score: [null, null, null]},
-            {rank: 4, player: "關注永雛塔菲謝謝喵", score: [null, null, null]},
-            {rank: 5, player: "拉格蘭我婆", score: [null, null, null]},
-            {rank: 6, player: "郝鎊謗", score: [null, null, null]},
-            {rank: 7, player: "三木", score: [null, null, null]},
-            {rank: 8, player: "Bot14", score: [null, null, null]},
-            {rank: 9, player: "七尾", score: [null, null, null]},
-            {rank: 10, player: "咖啡", score: [null, null, null]},
-            {rank: 11, player: "想睡覺", score: [null, null, null]},
-            {rank: 12, player: "niniagibye", score: [null, null, null]}
+            { image: '/competition01/arcaea/01.jpeg', title: 'ENERGY SYNERGY MATRIX', artist: 'Tanchiky', diff: 'BYD 10' },
+            { image: '/competition01/arcaea/02.jpeg', title: 'Dantalion', artist: 'Team Grimoire', diff: 'FTR 10+' },
+            { image: '/competition01/arcaea/03.jpeg', title: 'Callima Karma', artist: 't+pazolite vs Feryquitous', diff: 'FTR 9+' },
         ],
     },
     maimai: {
         courses: 3,
         songInfo: [
-            {
-                image: '/competition01/maimai/01.jpeg',
-                title: '前衛的Landscape',
-                artist: 'HiTECH NINJA feat. RANASOL',
-                diff: 'MAS 13+',
-            },
-            {
-                image: '/competition01/maimai/02.jpeg',
-                title: 'FFT',
-                artist: 'cybermiso',
-                diff: 'MAS 14',
-            },
-            {
-                image: '/competition01/maimai/03.jpeg',
-                title: '天火明命',
-                artist: '削除',
-                diff: 'MAS 14',
-            },
-
-        ],
-        players: [
-            {rank: 1, player: "maimai__0528", score: [null, null, null]},
-            {rank: 2, player: "moyu5945", score: [null, null, null]},
-            {rank: 3, player: "bobo0804", score: [null, null, null]},
-            {rank: 4, player: "kkkmr45322", score: [null, null, null]},
-            {rank: 5, player: "crimsrk", score: [null, null, null]},
-            {rank: 6, player: "foam_0.0", score: [null, null, null]},
-            {rank: 7, player: "gdren.", score: [null, null, null]},
-            {rank: 8, player: "strwng", score: [null, null, null]},
-            {rank: 9, player: "blackcatt._72", score: [null, null, null]},
-            {rank: 10, player: "loin0201", score: [null, null, null]},
-            {rank: 11, player: "tailcoat_", score: [null, null, null]},
-            {rank: 12, player: "p72toast", score: [null, null, null]},
-            {rank: 13, player: "manju9487", score: [null, null, null]},
-            {rank: 14, player: "blackpeaktw", score: [null, null, null]},
-            {rank: 15, player: "ax_eri.a", score: [null, null, null]},
-            {rank: 16, player: "stitch_0412", score: [null, null, null]}
+            { image: '/competition01/maimai/01.jpeg', title: '前衛的Landscape', artist: 'HiTECH NINJA feat. RANASOL', diff: 'MAS 13+' },
+            { image: '/competition01/maimai/02.jpeg', title: 'FFT', artist: 'cybermiso', diff: 'MAS 14' },
+            { image: '/competition01/maimai/03.jpeg', title: '天火明命', artist: '削除', diff: 'MAS 14' },
         ],
     },
     chunithm: {
         courses: 3,
         songInfo: [
-            {
-                image: '/competition01/chunithm/01.jpeg',
-                title: 'Superbia',
-                artist: 'Team Grimoire',
-                diff: 'MAS 14+',
-
-            },
-            {
-                image: '/competition01/chunithm/02.jpeg',
-                title: 'Calamity Fortune',
-                artist: 'LeaF',
-                diff: 'MAS 14+',
-            },
-            {
-                image: '/competition01/chunithm/03.jpeg',
-                title: '蜘蛛の糸',
-                artist: 'きくお×cosMo＠暴走P feat.影縫英',
-                diff: 'MAS 15',
-            },
-        ],
-        players: [
-            {rank: 1, player: "magnet_.", score: [1009456, 10009832, 1008840]},
-            {rank: 2, player: "halcybody", score: [null, null, null]},
-            {rank: 3, player: "thaumaturxy", score: [null, null, null]},
-            {rank: 4, player: "sean6095", score: [null, null, null]},
-            {rank: 5, player: "ric3cat", score: [null, null, null]},
-            {rank: 6, player: "xv16_tensixho", score: [null, null, null]},
-            {rank: 7, player: "thomas86llk", score: [null, null, null]},
-            {rank: 8, player: "meikungloveayame", score: [null, null, null]},
-            {rank: 9, player: "dddayo_1", score: [null, null, null]},
-            {rank: 10, player: "coffee0929", score: [null, null, null]},
-            {rank: 11, player: "_justinchang_", score: [null, null, null]},
-            {rank: 12, player: "boxes1010", score: [null, null, null]},
-            {rank: 13, player: "shoyu.1217", score: [null, null, null]},
-            {rank: 14, player: "mary_1108_chunithmplayer", score: [null, null, null]},
-            {rank: 15, player: "joleehigh", score: [null, null, null]},
-            {rank: 16, player: "lyc_1234", score: [null, null, null]}
+            { image: '/competition01/chunithm/01.jpeg', title: 'Superbia', artist: 'Team Grimoire', diff: 'MAS 14+' },
+            { image: '/competition01/chunithm/02.jpeg', title: 'Calamity Fortune', artist: 'LeaF', diff: 'MAS 14+' },
+            { image: '/competition01/chunithm/03.jpeg', title: '蜘蛛の糸', artist: 'きくお×cosMo＠暴走P feat.影縫英', diff: 'MAS 15' },
         ],
     },
     'ProjectSakai-jp': {
         courses: 4,
         songInfo: [
-            {
-                image: '/competition01/pjskjp/01.jpeg',
-                title: 'SAN値直葬',
-                artist: 'STEAKA.',
-                diff: 'MAS 33',
-            },
-            {
-                image: '/competition01/pjskjp/02.jpeg',
-                title: '0.0000034',
-                artist: 'Musanuriyu.',
-                diff: 'MAS 34',
-            },
-            {
-                image: '/competition01/pjskjp/03.jpeg',
-                title: 'folern',
-                artist: 'nulut.',
-                diff: 'APD 35',
-            },
-            {
-                image: '/competition01/pjskjp/04.jpeg',
-                title: 'the EmpErroR',
-                artist: 'sasakure.UK',
-                diff: 'MAS 36',
-            },
-        ],
-        players: [
-            { rank: 1, player: "luna_with_clh", score: [null, null, null, null]},
-            { rank: 2, player: "blackcatt._72", score: [null, null, null, null]}
+            { image: '/competition01/pjskjp/01.jpeg', title: 'SAN値直葬', artist: 'STEAKA.', diff: 'MAS 33' },
+            { image: '/competition01/pjskjp/02.jpeg', title: '0.0000034', artist: 'Musanuriyu.', diff: 'MAS 34' },
+            { image: '/competition01/pjskjp/03.jpeg', title: 'folern', artist: 'nulut.', diff: 'APD 35' },
+            { image: '/competition01/pjskjp/04.jpeg', title: 'the EmpErroR', artist: 'sasakure.UK', diff: 'MAS 36' },
         ],
     },
     'ProjectSakai-in': {
         courses: 5,
         songInfo: [
-            {
-                image: '/competition01/pjskin/01.jpeg',
-                title: 'ノンブレス・オブリージュ',
-                artist: 'Pinocchio-P',
-                diff: 'MAS 31',
-            },
-            {
-                image: '/competition01/pjskin/02.jpeg',
-                title: '熱異常',
-                artist: 'iyowa covered by 25-ji, Nightcord de.',
-                diff: 'MAS 32',
-            },
-            {
-                image: '/competition01/pjskin/03.jpeg',
-                title: 'folern',
-                artist: 'nulut.',
-                diff: 'MAS 32',
-            },
-            {
-                image: '/competition01/pjskin/04.jpeg',
-                title: 'トンデモワンダーズ',
-                artist: 'sasakure.UK',
-                diff: 'APD 33',
-            },
-            {
-                image: '/competition01/pjskin/05.jpeg',
-                title: '孃王',
-                artist: 'HachiojiP',
-                diff: 'MAS 33',
-            },
-        ],
-        players: [
-            {rank: 1, player: "blackcatt._72", score: [null, null, null]},
-            {rank: 2, player: "rumi_0527", score: [null, null, null]},
-            {rank: 3, player: "jackyang0623", score: [null, null, null]},
-            {rank: 4, player: "105269", score: [null, null, null]},
-            {rank: 5, player: "ye_yu_940520", score: [null, null, null]},
-            {rank: 6, player: "dddayo_1", score: [null, null, null]},
-            {rank: 7, player: "pisces314", score: [null, null, null]},
-            {rank: 8, player: "n0359._86780", score: [null, null, null]},
-            {rank: 9, player: "lyc_1234", score: [null, null, null]},
-            {rank: 10, player: "choroowo", score: [null, null, null]},
-            {rank: 11, player: "samtsai0428", score: [null, null, null]}
+            { image: '/competition01/pjskin/01.jpeg', title: 'ノンブレス・オブリージュ', artist: 'Pinocchio-P', diff: 'MAS 31' },
+            { image: '/competition01/pjskin/02.jpeg', title: '熱異常', artist: 'iyowa covered by 25-ji, Nightcord de.', diff: 'MAS 32' },
+            { image: '/competition01/pjskin/03.jpeg', title: 'folern', artist: 'nulut.', diff: 'MAS 32' },
+            { image: '/competition01/pjskin/04.jpeg', title: 'トンデモワンダーズ', artist: 'sasakure.UK', diff: 'APD 33' },
+            { image: '/competition01/pjskin/05.jpeg', title: '孃王', artist: 'HachiojiP', diff: 'MAS 33' },
         ],
     },
 };
-// --- End of Data ---
+
+const allPlayersData = ref<{ [key: string]: { players: Top16PlayerResult[] } }>({});
 
 const activeTab = ref('0');
 const games = [
@@ -249,14 +93,48 @@ const currentSongs = ref<Top16SongInfo[]>([]);
 const currentPlayers = ref<Top16PlayerResult[]>([]);
 const currentGameId = ref<string>(games[0].id);
 
+const fetchPlayersData = async () => {
+    const querySnapshot = await getDocs(collection(db, "top16results"));
+    const fetchedData: { [key: string]: { players: Top16PlayerResult[] } } = {};
+    querySnapshot.forEach((doc) => {
+        const data = doc.data() as { players: Omit<Top16PlayerResult, 'totalScore'>[] };
+
+        const playersWithTotalScore = data.players.map(player => {
+            const scores = player.score;
+            let totalScore: number | null = null;
+            // 僅當所有個人分數都可用時才計算總分
+            if (scores.every(s => s !== null && s !== undefined)) {
+                totalScore = scores.reduce((sum, current) => sum + (current as number), 0);
+            }
+
+            return {
+                ...player,
+                totalScore
+            };
+        });
+
+        fetchedData[doc.id] = {
+            players: playersWithTotalScore
+        };
+    });
+    allPlayersData.value = fetchedData;
+    updateContent(currentGameId.value); // 更新初始標籤的內容
+};
+
 const updateContent = (gameId: string) => {
     currentGameId.value = gameId;
-    const gameData = top16ResultsData[gameId];
-    if (gameData) {
-        currentSongs.value = gameData.songInfo;
-        currentPlayers.value = gameData.players;
+    const staticData = staticGameInfo[gameId];
+    const dynamicData = allPlayersData.value[gameId];
+
+    if (staticData) {
+        currentSongs.value = staticData.songInfo;
     } else {
         currentSongs.value = [];
+    }
+
+    if (dynamicData) {
+        currentPlayers.value = dynamicData.players.sort((a, b) => a.rank - b.rank);
+    } else {
         currentPlayers.value = [];
     }
 };
@@ -267,7 +145,7 @@ watch(activeTab, (newVal) => {
 });
 
 onMounted(() => {
-    updateContent(games[0].id);
+    fetchPlayersData();
 });
 
 const formatSingleScore = (score: number | null, gameId: string) => {
@@ -351,6 +229,11 @@ const formatSingleScore = (score: number | null, gameId: string) => {
                                 </template>
                                 <template #body="slotProps">
                                     {{ formatSingleScore(slotProps.data.score[sIndex], currentGameId) }}
+                                </template>
+                            </Column>
+                            <Column field="totalScore" header="總分">
+                                <template #body="slotProps">
+                                    {{ formatSingleScore(slotProps.data.totalScore, currentGameId) }}
                                 </template>
                             </Column>
                         </DataTable>
