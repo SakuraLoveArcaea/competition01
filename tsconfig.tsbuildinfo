@@ -1,0 +1,1 @@
+{"root":["./src/firebase.ts","./src/main.ts","./src/vite-env.d.ts","./src/router/index.ts","./src/app.vue","./src/components/helloworld.vue","./src/pages/homepage.vue","./src/pages/top16page.vue","./src/pages/top16result.vue","./src/pages/top8bracketpage.vue","./src/pages/top8page.vue"],"version":"5.9.3"}
