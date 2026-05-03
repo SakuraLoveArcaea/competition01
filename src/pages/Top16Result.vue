@@ -134,7 +134,7 @@ const top16ResultsData: { [key: string]: Top16GameData } = {
             },
         ],
         players: [
-            {rank: 1, player: "magnet_.", score: [10009832, 1009456, 1008840]},
+            {rank: 1, player: "magnet_.", score: [1009456, 10009832, 1008840]},
             {rank: 2, player: "halcybody", score: [null, null, null]},
             {rank: 3, player: "thaumaturxy", score: [null, null, null]},
             {rank: 4, player: "sean6095", score: [null, null, null]},
