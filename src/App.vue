@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {RouterLink, RouterView} from 'vue-router';
-import Checkbox from 'primevue/checkbox';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Tag from 'primevue/tag';
