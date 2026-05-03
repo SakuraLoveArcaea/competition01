@@ -115,14 +115,15 @@ const top16ResultsData: { [key: string]: Top16GameData } = {
         songInfo: [
             {
                 image: '/competition01/chunithm/01.jpeg',
-                title: 'Calamity Fortune',
-                artist: 'LeaF',
+                title: 'Superbia',
+                artist: 'Team Grimoire',
                 diff: 'MAS 14+',
+
             },
             {
                 image: '/competition01/chunithm/02.jpeg',
-                title: 'Superbia',
-                artist: 'Team Grimoire',
+                title: 'Calamity Fortune',
+                artist: 'LeaF',
                 diff: 'MAS 14+',
             },
             {
