@@ -2,17 +2,17 @@
 // 執行前，請確保您已在專案中安裝 firebase: npm install firebase
 // 執行指令: node ./scripts/update16result.js
 
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, setDoc, terminate } from "firebase/firestore";
+import {initializeApp} from "firebase/app";
+import {getFirestore, collection, doc, setDoc, terminate} from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCM0hQuTsJZDEW3FmoEC5FsqUNTOMH57ws",
-  authDomain: "competition01-507c6.firebaseapp.com",
-  projectId: "competition01-507c6",
-  storageBucket: "competition01-507c6.firebasestorage.app",
-  messagingSenderId: "907579028768",
-  appId: "1:907579028768:web:e4a1b831d5806817891345",
-  measurementId: "G-W67QGMJB92"
+    apiKey: "AIzaSyCM0hQuTsJZDEW3FmoEC5FsqUNTOMH57ws",
+    authDomain: "competition01-507c6.firebaseapp.com",
+    projectId: "competition01-507c6",
+    storageBucket: "competition01-507c6.firebasestorage.app",
+    messagingSenderId: "907579028768",
+    appId: "1:907579028768:web:e4a1b831d5806817891345",
+    measurementId: "G-W67QGMJB92"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -23,13 +23,13 @@ const top16ResultsData = {
     arcaea: {
         players: [
             {player: "XiaoHong", score: [null, null, null]},
-            {player: "CLH", score: [null, null, null]},
-            {player: "爺家森測試", score: [null, null, null]},
+            {player: "CLH", score: [9991102, 9984518, 10001200]},
+            {player: "爺家森測試", score: [9991100, 10001448, 9997119]},
             {player: "關注永雛塔菲謝謝喵", score: [null, null, null]},
             {player: "拉格蘭我婆", score: [null, null, null]},
             {player: "郝鎊謗", score: [null, null, null]},
             {player: "三木", score: [null, null, null]},
-            {player: "Bot14", score: [null, null, null]},
+            {player: "Bot14", score: [9981170, 9957320, 9972537]},
             {player: "七尾", score: [null, null, null]},
             {player: "咖啡", score: [null, null, null]},
             {player: "想睡覺", score: [null, null, null]},
@@ -43,13 +43,16 @@ const top16ResultsData = {
             {player: "moyu5945", score: [null, null, null]},
             {player: "bobo0804", score: [null, null, null]},
             {player: "kkkmr45322", score: [null, null, null]},
-            {player: "crimsrk", score: [null, null, null]},
+            // {player: "crimsrk", score: [100.9318, 100.9427, 81.5167]},
+            // {player: "crimsrk", score: [101.0000, 91.9386, 100.9369]},
+            {player: "crimsrk", score: [100.9772, 100.9857, 100.9333]},
             {player: "foam_0.0", score: [100.9545, 100.9785, 100.9619]},
             {player: "gdren.", score: [null, null, null]},
             {player: "strwng", score: [null, null, null]},
             {player: "blackcatt._72", score: [null, null, null]},
-            {player: "loin0201", score: [null, null, null]},
-            {player: "tailcoat_", score: [null, null, null]},
+            {player: "loin0201", score: [100.9772, 100.9713, 100.9184]},
+            // {player: "tailcoat_", score: [100.9581, 100,9714,100.8821]},
+            {player: "tailcoat_", score: [100.9545, 100.9427, 100.9833]},
             {player: "p72toast", score: [null, null, null]},
             {player: "blackpeaktw", score: [null, null, null]},
             {player: "ax_eri.a", score: [100.8935, 100.8067, 100.9851]},
@@ -60,17 +63,19 @@ const top16ResultsData = {
         players: [
             {player: "magnet_.", score: [1009456, 1009832, 1008840]},
             {player: "halcybody", score: [null, null, null]},
-            {player: "thaumaturxy", score: [null, null, null]},
+            {player: "thaumaturxy", score: [1009953,1009488,1009206]},
             {player: "sean6095", score: [null, null, null]},
-            {player: "ric3cat", score: [null, null, null]},
+            {player: "ric3cat", score: [1009459,1005850,1008962]},
             {player: "xv16_tensixho", score: [null, null, null]},
-            {player: "thomas86llk", score: [null, null, null]},
-            {player: "meikungloveayame", score: [null, null, null]},
+            {player: "thomas86llk", score: [1009506,1009703,1009382]},
+            // {player: "meikungloveayame", score: [1009495,1007946,10007421]},
+            {player: "meikungloveayame", score: [1009891,1009463,1008475]},
             {player: "dddayo_1", score: [null, null, null]},
-            {player: "coffee0929", score: [1007636, 1006932, 1005766]},
+            // {player: "coffee0929", score: [1007636, 1006932, 1005766]},
+            {player: "coffee0929", score: [1008962, 1007822, 1005942]},
             {player: "_justinchang_", score: [null, null, null]},
             {player: "boxes1010", score: [1009715, 1009415, 1007953]},
-            {player: "shoyu.1217", score: [null, null, null]},
+            {player: "shoyu.1217", score: [1008141, 1006842,1007744]},
             {player: "mary_1108_chunithmplayer", score: [null, null, null]},
             {player: "joleehigh", score: [1009884, 1008170, 1004372]},
             {player: "lyc_1234", score: [null, null, null]}
@@ -115,7 +120,7 @@ async function updateFirestore() {
                 if (scores.every(s => s !== null && s !== undefined)) {
                     totalScore = scores.reduce((sum, current) => sum + current, 0);
                 }
-                return { ...player, totalScore };
+                return {...player, totalScore};
             });
 
             // 2. 根據總分排序 (高分在前，無分在後)
@@ -128,13 +133,13 @@ async function updateFirestore() {
 
             // 3. 分配 rank 並移除 totalScore
             const processedPlayers = playersWithTotalScore.map((player, index) => {
-                const { totalScore, ...playerData } = player;
-                return { ...playerData, rank: index + 1 };
+                const {totalScore, ...playerData} = player;
+                return {...playerData, rank: index + 1};
             });
 
             console.log(`準備上傳 ${gameId} 的資料...`);
             const docRef = doc(collectionRef, gameId);
-            promises.push(setDoc(docRef, { players: processedPlayers }));
+            promises.push(setDoc(docRef, {players: processedPlayers}));
         }
     }
 

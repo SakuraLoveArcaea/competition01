@@ -179,7 +179,7 @@ const formatSingleScore = (score: number | null, gameId: string) => {
                                     <p>八強的選手必須擁有以下曲包/曲目，並解鎖全部難度：</p>
                                     <ul style="text-align: left; list-style-type: disc;">
                                         <li>Free</li>
-                                        <li>Main story</li>
+                                        <li>Main story: Act 1</li>
                                         <li>Absolute Reason</li>
                                         <li>Extend Archive 1:visions</li>
                                         <li>Memory Archive 中5首曲目：
