@@ -27,9 +27,10 @@ const top16ResultsData = {
             {player: "爺家森測試", score: [9991100, 10001448, 9997119]},
             // {player: "關注永雛塔菲謝謝喵", score: [1000996, 9943780, 9956173]},
             {player: "關注永雛塔菲謝謝喵", score: [9976239, 9940375, 9992999]},
-            {player: "拉格蘭我婆", score: [null, null, null]},
+            {player: "拉格蘭我婆", score: [9981193, 9981082, 10001202]},
             // {player: "郝鎊謗", score: [9986129, 9947171, 9993009]},
-            {player: "郝鎊謗", score: [9971297, 9974293, 9988920]},
+            // {player: "郝鎊謗", score: [9971297, 9974293, 9988920]},
+            {player: "郝鎊謗", score: [9991079, 9981060, 9988904]},
             {player: "三木", score: [null, null, null]},
             {player: "Bot14", score: [9981170, 9957320, 9972537]},
             {player: "七尾", score: [9961371, 9960733, 9972513]},
@@ -41,16 +42,16 @@ const top16ResultsData = {
     maimai: {
         players: [
             {player: "manju9487", score: [101.0000, 100.9499, 100.9351]},
-            {player: "maimai__0528", score: [null, null, null]},
+            {player: "maimai__0528", score: [100.9808, 100.9641, 100.9666]},
             {player: "moyu5945", score: [null, null, null]},
             {player: "bobo0804", score: [101.0000, 100.9857, 100.9833]},
-            {player: "kkkmr45322", score: [null, null, null]},
+            {player: "kkkmr45322", score: [100.9808, 100.9857, 100.9684]},
             // {player: "crimsrk", score: [100.9318, 100.9427, 81.5167]},
             // {player: "crimsrk", score: [101.0000, 91.9386, 100.9369]},
             {player: "crimsrk", score: [100.9772, 100.9857, 100.9333]},
             {player: "foam_0.0", score: [100.9545, 100.9785, 100.9619]},
             {player: "gdren.", score: [101.0000, 100.9857, 100.9666]},
-            {player: "strwng", score: [null, null, null]},
+            {player: "strwng", score: [101.0000, 100.9857, 100.9833]},
             {player: "blackcatt._72", score: [100.9772, 100.9642, 101.0000]},
             // {player: "loin0201", score: [100.9772, 100.9713, 100.9184]},
             {player: "loin0201", score: [100.9545, 100.9857, 100.9500]},
@@ -65,9 +66,10 @@ const top16ResultsData = {
     chunithm: {
         players: [
             {player: "magnet_.", score: [1009456, 1009832, 1008840]},
-            {player: "halcybody", score: [null, null, null]},
+            {player: "halcybody", score: [1009740, 1009742, 1008803]},
             {player: "thaumaturxy", score: [1009953,1009488,1009206]},
-            {player: "sean6095", score: [1008602, 1009677, 1007286]},
+            // {player: "sean6095", score: [1008602, 1009677, 1007286]},
+            {player: "sean6095", score: [1008955, 1009192, 1009550]},
             // {player: "ric3cat", score: [1009459,1005850,1008962]},
             {player: "ric3cat", score: [1009315,1009729,1008677]},
             {player: "xv16_tensixho", score: [null, null, null]},
@@ -82,14 +84,15 @@ const top16ResultsData = {
             {player: "boxes1010", score: [1009715, 1009415, 1007953]},
             {player: "shoyu.1217", score: [1008141, 1006842,1007744]},
             {player: "mary_1108_chunithmplayer", score: [1009301, 1009866, 1007454]},
-            {player: "joleehigh", score: [1009884, 1008170, 1004372]},
+            // {player: "joleehigh", score: [1009884, 1008170, 1004372]},
+            {player: "joleehigh", score: [1009441, 1009458, 1006178]},
             {player: "lyc_1234", score: [null, null, null]}
         ],
     },
     'ProjectSakai-jp': {
         players: [
-            {player: "luna_with_clh", score: [null, null, null, null]},
-            {player: "blackcatt._72", score: [null, null, null, null]}
+            {player: "luna_with_clh", score: [5342, null, null, null]},
+            {player: "blackcatt._72", score: [5366, null, null, null]}
         ],
     },
     'ProjectSakai-in': {
@@ -97,14 +100,14 @@ const top16ResultsData = {
             {player: "blackcatt._72", score: [3609, 3591, 4455, 4812, 4364]},
             {player: "rumi_0527", score: [3609, 3591, 4454, 4857, 4365]},
             {player: "jackyang0623", score: [null, null, null, null, null]},
-            {player: "105269", score: [3609, null, 4445, null, null]},
+            {player: "105269", score: [3609, 3579, 4445, null, 4324]},
             {player: "ye_yu_940520", score: [3598, 3544, 4439, 4784, 4338]},
-            {player: "dddayo_1", score: [null, null, null, null, 4349]},
-            {player: "pisces314", score: [null, null, null, null, null]},
-            {player: "n0359._86780", score: [null, null, null, null, null]},
+            {player: "dddayo_1", score: [3583, 3555, 4424, 4856, 4349]},
+            {player: "pisces314", score: [3583, 3470, 4394, 3582, 4249]},
+            {player: "n0359._86780", score: [3565, null, null, null, null]},
             {player: "lyc_1234", score: [null, null, null, null, null]},
             {player: "choroowo", score: [null, null, null, null, null]},
-            {player: "samtsai0428", score: [3587, 3557, 4435, 4817, 4361]}
+            {player: "samtsai0428", score: [3587, 4102, 4435, 4834, 4335]}
         ],
     },
 };

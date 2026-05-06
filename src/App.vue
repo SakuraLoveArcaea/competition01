@@ -38,11 +38,11 @@ const items = ref([
 
 // --- Announcement Data ---
 const announcementData = ref([
-    {project: 'Arcaea', prelims: true, top16_list: true, top16: true, top8_list: false},
-    {project: 'maimai', prelims: true, top16_list: true, top16: true, top8_list: false},
-    {project: 'Chunithm', prelims: true, top16_list: true, top16: true, top8_list: false},
-    {project: 'PJSK 日服', prelims: true, top16_list: true, top16: true, top8_list: false},
-    {project: 'PJSK 國際/台服', prelims: true, top16_list: true, top16: true, top8_list: false},
+    {project: 'Arcaea', prelims: true, top16_list: true, top16: false, top8_list: false},
+    {project: 'maimai', prelims: true, top16_list: true, top16: false, top8_list: false},
+    {project: 'Chunithm', prelims: true, top16_list: true, top16: false, top8_list: false},
+    {project: 'PJSK 日服', prelims: true, top16_list: true, top16: false, top8_list: false},
+    {project: 'PJSK 國際/台服', prelims: true, top16_list: true, top16: false, top8_list: false},
 ]);
 // --- End of Data ---
 
