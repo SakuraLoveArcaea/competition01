@@ -86,11 +86,11 @@ const bracketData = {
 
 const activeTab = ref('0');
 const games = [
-  { id: 'arcaea', name: 'Arcaea(5/8)' },
-  { id: 'maimai', name: 'maimai(5/9)' },
-  { id: 'chunithm', name: 'Chunithm(5/9)' },
-  { id: 'ProjectSakai-jp', name: 'Project Sakai 日服(5/8)' },
-  { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服(5/8)' }
+  { id: 'arcaea', name: 'Arcaea(5/9)' },
+  { id: 'maimai', name: 'maimai(5/10)' },
+  { id: 'chunithm', name: 'Chunithm(5/10)' },
+  { id: 'ProjectSakai-jp', name: 'Project Sakai 日服(5/9)' },
+  { id: 'ProjectSakai-in', name: 'Project Sakai 台/國際服(5/9)' }
 ];
 
 const currentBracket = ref(bracketData.arcaea);
