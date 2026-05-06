@@ -103,8 +103,8 @@ const fetchPlayersData = async () => {
             const scores = player.score;
             let totalScore: number | null = null;
             // 僅當所有個人分數都可用時才計算總分
-            if (scores.every(s => s !== null && s !== undefined)) {
-                totalScore = scores.reduce((sum, current) => sum + (current as number), 0);
+            if (scores) {
+                totalScore = scores.reduce((sum, current) => (sum ? sum : 0) + (current as number), 0);
             }
 
             return {

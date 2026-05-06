@@ -103,11 +103,11 @@ const top16ResultsData = {
             {player: "105269", score: [3609, 3579, 4445, null, 4324]},
             {player: "ye_yu_940520", score: [3598, 3544, 4439, 4784, 4338]},
             {player: "dddayo_1", score: [3583, 3555, 4424, 4856, 4349]},
-            {player: "pisces314", score: [null, 3470, 4394, 3582, 4249]},
+            {player: "pisces314", score: [3583, 3470, 4394, null, 4249]},
             {player: "n0359._86780", score: [3565, null, null, null, null]},
             {player: "lyc_1234", score: [null, null, null, null, null]},
             {player: "choroowo", score: [null, null, null, null, null]},
-            {player: "samtsai0428", score: [3587, 4102, 4435, 4834, 4335]}
+            {player: "samtsai0428", score: [3587, 3582, 4435, 4834, 4335]}
         ],
     },
 };
@@ -125,8 +125,8 @@ async function updateFirestore() {
             const playersWithTotalScore = gameData.players.map(player => {
                 const scores = player.score;
                 let totalScore = null;
-                if (scores.every(s => s !== null && s !== undefined)) {
-                    totalScore = scores.reduce((sum, current) => sum + current, 0);
+                if (scores) {
+                    totalScore = scores.reduce((sum, current) => (sum ? sum : 0) + current, 0);
                 }
                 return {...player, totalScore};
             });
