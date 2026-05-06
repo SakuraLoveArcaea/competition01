@@ -103,7 +103,7 @@ const top16ResultsData = {
             {player: "105269", score: [3609, 3579, 4445, null, 4324]},
             {player: "ye_yu_940520", score: [3598, 3544, 4439, 4784, 4338]},
             {player: "dddayo_1", score: [3583, 3555, 4424, 4856, 4349]},
-            {player: "pisces314", score: [3583, 3470, 4394, 3582, 4249]},
+            {player: "pisces314", score: [null, 3470, 4394, 3582, 4249]},
             {player: "n0359._86780", score: [3565, null, null, null, null]},
             {player: "lyc_1234", score: [null, null, null, null, null]},
             {player: "choroowo", score: [null, null, null, null, null]},

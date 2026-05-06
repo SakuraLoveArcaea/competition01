@@ -2,13 +2,13 @@
 import {ref, watch, onMounted} from 'vue';
 import {doc, getDoc} from 'firebase/firestore';
 import {db} from '../firebase';
-import Tabs from 'primevue/tabs';
-import TabList from 'primevue/tablist';
-import Tab from 'primevue/tab';
-import TabPanels from 'primevue/tabpanels';
-import TabPanel from 'primevue/tabpanel';
-import Dialog from 'primevue/dialog';
-import Button from 'primevue/button'; // 引入 Button 元件
+// import Tabs from 'primevue/tabs';
+// import TabList from 'primevue/tablist';
+// import Tab from 'primevue/tab';
+// import TabPanels from 'primevue/tabpanels';
+// import TabPanel from 'primevue/tabpanel';
+// import Dialog from 'primevue/dialog';
+// import Button from 'primevue/button'; // 引入 Button 元件
 
 // --- 更新後的介面 ---
 interface MatchData {
@@ -33,15 +33,15 @@ interface Bracket {
 const bracketData = ref<Bracket | null>(null);
 
 // --- Dialog 狀態 ---
-const isDialogVisible = ref(false);
-const selectedMatch = ref<Match | null>(null);
+// const isDialogVisible = ref(false);
+// const selectedMatch = ref<Match | null>(null);
 
-const showMatchDetails = (match: Match) => {
-    if (match && match.p1 && match.p2) { // 只有當比賽存在且有選手時才顯示
-        selectedMatch.value = match;
-        isDialogVisible.value = true;
-    }
-};
+// const showMatchDetails = (match: Match) => {
+//     if (match && match.p1 && match.p2) { // 只有當比賽存在且有選手時才顯示
+//         selectedMatch.value = match;
+//         isDialogVisible.value = true;
+//     }
+// };
 
 // --- 資料讀取 ---
 const fetchBracketData = async (gameId: string) => {
@@ -86,86 +86,86 @@ watch(activeTab, (newVal) => {
     <div v-if="true">
         新版八強淘汰賽賽程圖開發中
     </div>
-    <div v-if="false" class="container">
-        <h1>八強淘汰賽</h1>
+<!--    <div v-if="false" class="container">-->
+<!--        <h1>八強淘汰賽</h1>-->
 
-        <Tabs v-model:value="activeTab">
-            <TabList>
-                <Tab v-for="(game, index) in games" :key="game.id" :value="index.toString()" class="p-tab">
-                    {{ game.name }}
-                </Tab>
-            </TabList>
-            <TabPanels>
-                <TabPanel v-for="(game, index) in games" :key="game.id" :value="index.toString()">
-                    <div class="bracket-container" v-if="bracketData">
-                        <div class="bracket">
-                            <!-- Quarterfinals -->
-                            <div class="round quarterfinals">
-                                <div class="round__title">八強賽</div>
-                                <div class="round__matches">
-                                    <div class="round__match" v-for="(match, matchIndex) in bracketData.quarterfinals" :key="`qf-${matchIndex}`" @click="showMatchDetails(match)">
-                                        <div class="participant"><span>{{ match.p1 }}</span></div>
-                                        <div class="participant"><span>{{ match.p2 }}</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Semifinals -->
-                            <div class="round semifinals">
-                                <div class="round-title">準決賽</div>
-                                <Button class="match" v-for="(match, matchIndex) in bracketData.semifinals"
-                                        :key="`sf-${matchIndex}`" @click="showMatchDetails(match)">
-                                    <div class="participant"><span>{{ match.p1 }}</span></div>
-                                    <div class="participant"><span>{{ match.p2 }}</span></div>
-                                </Button>
-                            </div>
-                            <!-- Final -->
-                            <div class="round final">
-                                <div class="round-title">決賽</div>
-                                <Button class="match" @click="showMatchDetails(bracketData.final)">
-                                    <div class="participant"><span>{{ bracketData.final.p1 }}</span></div>
-                                    <div class="participant"><span>{{ bracketData.final.p2 }}</span></div>
-                                </Button>
-                            </div>
-                            <!-- Winner -->
-                            <div class="round winner">
-                                <div class="round-title">冠軍</div>
-                                <div class="match">
-                                    <div class="participant winner-box"><span>{{ bracketData.champion }}</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </TabPanel>
-            </TabPanels>
-        </Tabs>
+<!--        <Tabs v-model:value="activeTab">-->
+<!--            <TabList>-->
+<!--                <Tab v-for="(game, index) in games" :key="game.id" :value="index.toString()" class="p-tab">-->
+<!--                    {{ game.name }}-->
+<!--                </Tab>-->
+<!--            </TabList>-->
+<!--            <TabPanels>-->
+<!--                <TabPanel v-for="(game, index) in games" :key="game.id" :value="index.toString()">-->
+<!--                    <div class="bracket-container" v-if="bracketData">-->
+<!--                        <div class="bracket">-->
+<!--                            &lt;!&ndash; Quarterfinals &ndash;&gt;-->
+<!--                            <div class="round quarterfinals">-->
+<!--                                <div class="round__title">八強賽</div>-->
+<!--                                <div class="round__matches">-->
+<!--                                    <div class="round__match" v-for="(match, matchIndex) in bracketData.quarterfinals" :key="`qf-${matchIndex}`" @click="showMatchDetails(match)">-->
+<!--                                        <div class="participant"><span>{{ match.p1 }}</span></div>-->
+<!--                                        <div class="participant"><span>{{ match.p2 }}</span></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; Semifinals &ndash;&gt;-->
+<!--                            <div class="round semifinals">-->
+<!--                                <div class="round-title">準決賽</div>-->
+<!--                                <Button class="match" v-for="(match, matchIndex) in bracketData.semifinals"-->
+<!--                                        :key="`sf-${matchIndex}`" @click="showMatchDetails(match)">-->
+<!--                                    <div class="participant"><span>{{ match.p1 }}</span></div>-->
+<!--                                    <div class="participant"><span>{{ match.p2 }}</span></div>-->
+<!--                                </Button>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; Final &ndash;&gt;-->
+<!--                            <div class="round final">-->
+<!--                                <div class="round-title">決賽</div>-->
+<!--                                <Button class="match" @click="showMatchDetails(bracketData.final)">-->
+<!--                                    <div class="participant"><span>{{ bracketData.final.p1 }}</span></div>-->
+<!--                                    <div class="participant"><span>{{ bracketData.final.p2 }}</span></div>-->
+<!--                                </Button>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; Winner &ndash;&gt;-->
+<!--                            <div class="round winner">-->
+<!--                                <div class="round-title">冠軍</div>-->
+<!--                                <div class="match">-->
+<!--                                    <div class="participant winner-box"><span>{{ bracketData.champion }}</span></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </TabPanel>-->
+<!--            </TabPanels>-->
+<!--        </Tabs>-->
 
-        <!-- Match Details Dialog -->
-        <Dialog v-model:visible="isDialogVisible" modal header="比賽詳情" :style="{ width: '50vw' }"
-                :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
-            <div v-if="selectedMatch" class="match-details">
-                <h3 class="match-title">{{ selectedMatch.p1 }} vs {{ selectedMatch.p2 }}</h3>
-                <p v-if="selectedMatch.matchdata && selectedMatch.matchdata.winner"><strong>勝者:</strong>
-                    {{ selectedMatch.matchdata.winner }}</p>
+<!--        &lt;!&ndash; Match Details Dialog &ndash;&gt;-->
+<!--        <Dialog v-model:visible="isDialogVisible" modal header="比賽詳情" :style="{ width: '50vw' }"-->
+<!--                :breakpoints="{ '960px': '75vw', '641px': '100vw' }">-->
+<!--            <div v-if="selectedMatch" class="match-details">-->
+<!--                <h3 class="match-title">{{ selectedMatch.p1 }} vs {{ selectedMatch.p2 }}</h3>-->
+<!--                <p v-if="selectedMatch.matchdata && selectedMatch.matchdata.winner"><strong>勝者:</strong>-->
+<!--                    {{ selectedMatch.matchdata.winner }}</p>-->
 
-                <div v-if="selectedMatch.matchdata" class="song-list">
-                    <div v-for="(song, index) in selectedMatch.matchdata.songImg" :key="index" class="song-item">
-                        <img :src="song" alt="Song cover" class="song-img" v-if="song"/>
-                        <div class="song-info">
-                            <p><strong>歌曲 {{ index + 1 }}</strong></p>
-                            <p>
-                                分數: {{
-                                    formatSingleScore(selectedMatch.matchdata.score[index], games[parseInt(activeTab)].id)
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div v-else>
-                    <p>暫無詳細比賽數據。</p>
-                </div>
-            </div>
-        </Dialog>
-    </div>
+<!--                <div v-if="selectedMatch.matchdata" class="song-list">-->
+<!--                    <div v-for="(song, index) in selectedMatch.matchdata.songImg" :key="index" class="song-item">-->
+<!--                        <img :src="song" alt="Song cover" class="song-img" v-if="song"/>-->
+<!--                        <div class="song-info">-->
+<!--                            <p><strong>歌曲 {{ index + 1 }}</strong></p>-->
+<!--                            <p>-->
+<!--                                分數: {{-->
+<!--                                    formatSingleScore(selectedMatch.matchdata.score[index], games[parseInt(activeTab)].id)-->
+<!--                                }}-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div v-else>-->
+<!--                    <p>暫無詳細比賽數據。</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </Dialog>-->
+<!--    </div>-->
 </template>
 
 <style scoped>
